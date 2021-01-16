@@ -18,6 +18,7 @@ with open(csvpath) as csvfile:
     percent_votes = 0
     count_votes = 0
     winner = 0
+    loser = 0
 
     for row in csvreader:
 
