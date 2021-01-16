@@ -11,11 +11,11 @@ with open(csvpath) as csvfile:
     print(csvreader)
 
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
 
     total_months = 0
     total = 0
     average_change = 0
+    monthly_change = 0
     month_increase = 0
     greatest_increase = 0
     month_decrease = 0
@@ -31,6 +31,10 @@ with open(csvpath) as csvfile:
         total += profit_loss_col
 
         # average_change = (first_row - last_row) / (total_months - 1)
+
+    for row in enumerate(csvreader):
+
+        print(row)
 
     print('')
     print('Financial Analysis')
