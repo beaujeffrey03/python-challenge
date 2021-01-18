@@ -11,20 +11,33 @@ with open(csvpath) as csvfile:
     print(csvreader)
 
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
 
     total_votes = 0
-    candidate_name = 0
-    percent_votes = 0
+    candidate_list = []
+    candidate_vote_list = []
     count_votes = 0
+    candidate_name = 0
+    county = []
+    percent_votes = 0
     winner = 0
     loser = 0
 
     for row in csvreader:
 
+        candidate_col = row[2]
+
         total_votes += 1
 
+        if candidate_col not in candidate_list:
+            candidate_list.append(candidate_col)
 
+        # if candidate_name in candidate_list:
+        #     candidate_vote_list = candidate_vote_list.append(candidate_vote_list + 1)
+
+    # print('')
+    # print(f'{candidate_vote_list}')
+    print('')
+    print(f'{candidate_list}')
     print('')
     print('Election Results')
     print('--------------------------------')
