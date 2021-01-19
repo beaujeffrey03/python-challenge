@@ -13,37 +13,68 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader)
 
     total_votes = 0
-    candidate_list = []
-    candidate_vote_list = []
-    count_votes = 0
-    candidate_name = 0
-    county = []
-    percent_votes = 0
+    percent = 0
     winner = 0
     loser = 0
+    election_outcome_dict = {}
+    candidate_list = []
 
     for row in csvreader:
 
-        candidate_col = row[2]
-
+        name = row[2]
         total_votes += 1
+        count_votes = 0
+        
+        if name in election_outcome_dict.keys():
+            count_votes = count_votes + 1
+            # print('yes')
 
-        if candidate_col not in candidate_list:
-            candidate_list.append(candidate_col)
-
-        # if candidate_name in candidate_list:
-        #     candidate_vote_list = candidate_vote_list.append(candidate_vote_list + 1)
-
-    # print('')
-    # print(f'{candidate_vote_list}')
-    print('')
-    print(f'{candidate_list}')
+        else:
+            election_outcome_dict.update({name: count_votes})
+            # print('no')
+    
     print('')
     print('Election Results')
     print('--------------------------------')
     print(f'Total Votes: {total_votes}')
     print('--------------------------------')
-    print(f'{candidate_name}: {percent_votes} ({count_votes})')
+    print(f'{election_outcome_dict}')
     print('--------------------------------')
     print(f'Winner: {winner}')
     print('--------------------------------')
+
+# Unlike lists, dictionaries store information in pairs
+# ---------------------------------------------------------------
+
+# Create a dictionary to hold the actor's names.
+# actors = {}
+
+# Create a dictionary using the built-in function.
+# actors = dict()
+
+# A dictionary of an actor.
+# actors = {"name": "Tom Cruise"}
+# print(f'{actors["name"]}')
+
+# # Add an actor to the dictionary with the key "name"
+# # and the value "Denzel Washington".
+# actors["name"] = "Denzel Washington"
+
+# # Print the actors dictionary.
+# print(actors["name"])
+
+# # Print only the actor.
+# print(f'{actors["name"]}')
+
+# # A list of actors
+# actors_list = [
+#     "Tom Cruise",
+#     "Angelina Jolie",
+#     "Kristen Stewart",
+#     "Denzel Washington"]
+
+# # Overwrite the value, "Denzel Washington", with the list of actors.
+# actors["name"] = actors_list
+
+# # Print the first actor
+# print(f'{actors["name"][0]}')
