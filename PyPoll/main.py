@@ -2,7 +2,15 @@ import os
 
 import csv
 
-csvpath = os.path.join('Resources', '02-Homework_03-Python_Instructions_PyPoll_Resources_election_data.csv')
+csvpath = os.path.join('Resources', 'election_data.csv')
+
+def percent_func(dict):
+    total = 0
+    for count in dict:
+        total = total + dict[count]
+    for percent in dict:
+        dict[percent] = (float((dict[percent])/total)) * 100
+    return dict
 
 with open(csvpath) as csvfile:
 
@@ -13,68 +21,36 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader)
 
     total_votes = 0
-    percent = 0
     winner = 0
-    loser = 0
-    election_outcome_dict = {}
-    candidate_list = []
+    votes_dict = {}
+    percent_dict = {}
 
     for row in csvreader:
 
         name = row[2]
         total_votes += 1
-        count_votes = 0
-        
-        if name in election_outcome_dict.keys():
-            count_votes = count_votes + 1
-            # print('yes')
+        votes = {}
+
+        if name not in votes_dict:
+            votes_dict[name] = 1
 
         else:
-            election_outcome_dict.update({name: count_votes})
-            # print('no')
+            votes_dict[name] += 1
+
+    percent_dict = percent_func(votes_dict)
+
+    print('')
+    print (votes_dict)
+    print('')
+    print (percent_dict)
+
     
     print('')
     print('Election Results')
     print('--------------------------------')
     print(f'Total Votes: {total_votes}')
     print('--------------------------------')
-    print(f'{election_outcome_dict}')
+    print(f'{percent_dict}')
     print('--------------------------------')
     print(f'Winner: {winner}')
     print('--------------------------------')
-
-# Unlike lists, dictionaries store information in pairs
-# ---------------------------------------------------------------
-
-# Create a dictionary to hold the actor's names.
-# actors = {}
-
-# Create a dictionary using the built-in function.
-# actors = dict()
-
-# A dictionary of an actor.
-# actors = {"name": "Tom Cruise"}
-# print(f'{actors["name"]}')
-
-# # Add an actor to the dictionary with the key "name"
-# # and the value "Denzel Washington".
-# actors["name"] = "Denzel Washington"
-
-# # Print the actors dictionary.
-# print(actors["name"])
-
-# # Print only the actor.
-# print(f'{actors["name"]}')
-
-# # A list of actors
-# actors_list = [
-#     "Tom Cruise",
-#     "Angelina Jolie",
-#     "Kristen Stewart",
-#     "Denzel Washington"]
-
-# # Overwrite the value, "Denzel Washington", with the list of actors.
-# actors["name"] = actors_list
-
-# # Print the first actor
-# print(f'{actors["name"][0]}')
