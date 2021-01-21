@@ -14,18 +14,18 @@ def percent_func(dict):
 
 with open(csvpath) as csvfile:
 
-    csvreader = csv.reader(csvfile, delimiter=',')
+    election = csv.reader(csvfile, delimiter=',')
 
-    print(csvreader)
+    print(election)
 
-    csv_header = next(csvreader)
+    csv_header = next(election)
 
     total_votes = 0
     winner = 0
     votes_dict = {}
     percent_dict = {}
 
-    for row in csvreader:
+    for row in election:
 
         name = row[2]
         total_votes += 1
