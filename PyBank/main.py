@@ -2,12 +2,12 @@
 # For this portion of the code, I have presented two different approaches that ultimately produce the same result.
 # The main difference between the two is the method used to get the average change value. They both produce the same number.
 
-# The first (not commented out) is the method I'm most proud because I mostly figured it out myself with the class materials
-# #    and a little help from Google.
-# The method to get the average will not work if the profit/loss are not distributed chronolically.
-# Of course, in this case, they are, so I interpreted the average change as a rate. The amount of change over time.
+# The first (not commented out) is the method I'm most proud because I mostly figured it out myself with the class materials,
+# #    and a little help from Google and TA Farshad.
+# The method to get the average here will not work if the profit/loss are not distributed chronolically.
+# Of course, in this case, they are, so I interpreted the average change as a rate; the net change over time.
 
-# The second (commented out) has some code borrowed from a classmate, Stephanie Richards, and therefore less original.
+# The second (commented out) has some code borrowed from a classmate, Stephanie Richards, and therefore less original. Shout-out to her.
 # Her method for finding the average change works both in this case and for when the values aren't a net profit/loss over time.
 # Therefore, I wanted to demonstrate that I also took the time to learn that method.
 
@@ -49,11 +49,11 @@ with open(csvpath) as csvfile:
         else:
             last_row = profit_loss_col
 
-    change_average = (last_row - first_row) / (total_months - 1)
+    change_average = (last_row-first_row) / (total_months-1)
 
     for item in range(1,len(profit_loss_list)):
 
-        change_list.append(profit_loss_list[item] - profit_loss_list[item - 1])
+        change_list.append(profit_loss_list[item]-profit_loss_list[item-1])
 
     change_list.pop(0)
     change_list.insert(0, int(0))
@@ -102,6 +102,7 @@ with open(output_path, "w") as text_file:
 #     change_average = 0
 #     profit_loss_list = []
 #     months_list = []
+#     change_list = []
 
 #     for row in budget:
 
@@ -111,21 +112,18 @@ with open(output_path, "w") as text_file:
 #         months_list.append(month_col)
 #         profit_loss_list.append(profit_loss_col)
 
-#         monthly_change = int(profit_loss_col)
-
-#         total_rev = total_rev + monthly_change
+#         total_rev += profit_loss_col
 
 #     total_months = len(months_list)
 
-#     change_list = []
 #     for item in profit_loss_list:
 
 #         previous_item = profit_loss_list[profit_loss_list.index(item)-1]
 #         change = item - previous_item
 #         change_list.append(int(change))
 
-    # change_list.pop(0)
-    # change_list.insert(0, int(0))
+#     change_list.pop(0)
+#     change_list.insert(0, int(0))
 
 #     change_sum = sum(change_list)
 #     change_average = float(int(change_sum) / (total_months - 1))
