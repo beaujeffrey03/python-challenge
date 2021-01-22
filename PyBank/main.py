@@ -69,15 +69,6 @@ with open(csvpath) as csvfile:
     increase_month = str(months_list[change_list.index(max(change_list))])
     decrease_month = str(months_list[change_list.index(min(change_list))])
 
-print('')
-print('Financial Analysis')
-print('-------------------------------------------')
-print(f'Total Months: {total_months}')
-print(f'Total: ${total_rev}')
-print(f'Average Change: ${round(change_average, 2)}')
-print(f'Greatest Increase in Profits: {increase_month} (${greatest_increase})')
-print(f'Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})')
-
 output_path = os.path.join("Analysis", "PyBank_Analysis.txt")
 
 with open(output_path, "w") as text_file:
