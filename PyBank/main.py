@@ -73,10 +73,10 @@ output_path = os.path.join("Analysis", "PyBank_Analysis.txt")
 
 with open(output_path, "w") as text_file:
 
-    print('Financial Analysis', file = text_file)
-    print('-------------------------------------------', file = text_file)
-    print(f'Total Months: {total_months}', file = text_file)
-    print(f'Total: ${total_rev}', file = text_file)
-    print(f'Average Change: ${round(change_average, 2)}', file = text_file)
-    print(f'Greatest Increase in Profits: {increase_month} (${greatest_increase})', file = text_file)
-    print(f'Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})', file = text_file)
+    print('Financial Analysis\n'
+    f'------------------------------------------- \n'
+    f'Total Months: {total_months}\n'
+    f'Total: ${total_rev}\n'
+    f'Average Change: ${round(change_average, 2)}\n'
+    f'Greatest Increase in Profits: {increase_month} (${greatest_increase})\n'
+    f'Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})', file = text_file)

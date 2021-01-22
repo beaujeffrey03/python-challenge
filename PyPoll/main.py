@@ -65,12 +65,12 @@ output_path = os.path.join("Analysis", "PyPoll_Analysis.txt")
 
 with open(output_path, "w") as text_file:
 
-    print('Election Results', file = text_file)
-    print('--------------------------------', file = text_file)
-    print(f'Total Votes: {total_votes}', file = text_file)
-    print('--------------------------------', file = text_file)
+    print(f'Election Results\n'
+    f'--------------------------------\n'
+    f'Total Votes: {total_votes}\n'
+    f'--------------------------------', file = text_file)
     for result in results_tuple:
         print(f'{result[0]}: {result[1]}% ({result[2]})', file = text_file)
-    print('--------------------------------', file = text_file)
-    print(f'Winner: {winner}', file = text_file)
-    print('--------------------------------', file = text_file)
+    print('--------------------------------\n'
+    f'Winner: {winner}\n'
+    f'--------------------------------\n', file = text_file)
